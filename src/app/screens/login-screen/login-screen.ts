@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SHARED_IMPORTS } from '../../shared/shared.imports';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-screen',
@@ -20,7 +21,9 @@ export class LoginScreen implements OnInit {
   public hide_1: boolean = false;
   public inputType_1: string = 'password';
 
-  constructor() { }
+  constructor(
+    private readonly router: Router
+  ) { }
 
   ngOnInit(): void {
   }
@@ -45,7 +48,7 @@ export class LoginScreen implements OnInit {
   }
 
   public goRegistro(){
-
+    this.router.navigate(['registro']); // ajuste según su app
   }
 
 }
