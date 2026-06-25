@@ -1,0 +1,50 @@
+<!--
+  Header semántico de la aplicación.
+  - Se usa <header> para indicar que es el encabezado principal.
+  - role="banner" ayuda a herramientas de accesibilidad.
+-->
+<header class="ha" role="banner">
+
+  <!-- =========================
+       BOTÓN MENÚ (HAMBURGUESA)
+       =========================
+       - Usamos <button> en lugar de <div (click)> por accesibilidad.
+       - type="button" evita comportamiento de submit si algún día se mete en un <form>.
+       - (click) emite el evento para que el contenedor (Home) abra/cierre el sidebar.
+  -->
+  <button
+    type="button"
+    class="ha__menu"
+    (click)="onToggleMenu()"
+    aria-label="Abrir menú"
+  >
+    <!-- Icono Material de "hamburguesa" -->
+    <mat-icon class="ha__menu-icon" aria-hidden="true">dehaze</mat-icon>
+  </button>
+
+  <!-- =========================
+       LOGO CENTRADO
+       =========================
+       - Se centra sin depender de hacks usando grid.
+       - Se usa ruta sin slash inicial (assets/...) para no romper despliegues con sub-ruta.
+       - alt describe el contenido de la imagen (accesibilidad).
+  -->
+  <div class="ha__logo">
+    <img
+      src="assets/images/logo-marcas.png"
+      class="ha__logo-img"
+      alt="Logos de marcas"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+
+  <!-- =========================
+       ESPACIADOR DERECHO
+       =========================
+       - Se mantiene un área vacía del mismo tamaño que el botón izquierdo.
+       - Esto garantiza que el logo quede realmente centrado.
+  -->
+  <div class="ha__spacer" aria-hidden="true"></div>
+
+</header>

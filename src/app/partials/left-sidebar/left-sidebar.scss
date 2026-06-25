@@ -1,0 +1,208 @@
+/* =========================================================
+   CONTENEDOR PRINCIPAL
+   - height: 100% porque el drawer lo controla el contenedor (Home)
+   - flex column para: header arriba, body al centro, footer abajo
+   - fondo negro y texto blanco (como wireframe)
+   ========================================================= */
+
+:host {
+  /* Fuente base de toda la aplicación */
+  --ls-font-family: "Avenir";
+
+  /* Pesos válidos (ajustar si su @font-face define otros) */
+  --ls-font-regular: 400;
+  --ls-font-bold: 700;
+}
+
+.ls {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #000;
+  color: #fff;
+
+  /* Fuerza la tipografía en todo el sidebar */
+  font-family: var(--ls-font-family);
+  font-weight: var(--ls-font-regular);
+}
+
+/* =========================================================
+   HEADER (franja blanca)
+   - altura fija parecida al diseño
+   - botón de cierre con "X"
+   ========================================================= */
+.ls__header {
+  background: #fff;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+
+  font-family: var(--ls-font-family);
+}
+
+/* Botón "X" */
+.ls__close {
+  width: 44px;
+  height: 44px;
+  border: 0;
+  background: transparent;
+  color: #000;
+  font-size: 34px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+
+  /* Importante: botones NO heredan fuente siempre */
+  font-family: var(--ls-font-family);
+  font-weight: var(--ls-font-regular);
+}
+
+/* focus-visible: para navegación con teclado (accesibilidad) */
+.ls__close:focus-visible {
+  outline: 2px solid rgba(0, 0, 0, 0.6);
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   BODY (lista de opciones)
+   - flex: 1 permite que el body ocupe todo el espacio disponible
+   - overflow: auto permite scroll si hay muchos elementos
+   - gap grande para emular el espaciado del diseño
+   ========================================================= */
+.ls__body {
+  flex: 1;
+  padding: 26px 16px 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  overflow: auto;
+
+  font-family: var(--ls-font-family);
+}
+
+/* =========================================================
+   ITEM DEL MENÚ
+   - No usamos "cards": fondo transparente (como el diseño)
+   - display: grid:
+     columna 1: barra roja
+     columna 2: texto
+     columna 3: chevron
+   ========================================================= */
+.ls__item {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  width: 100%;
+  padding: 16px 10px;
+  display: grid;
+  grid-template-columns: 4px 1fr auto;
+  gap: 16px;
+  align-items: center;
+  text-align: left;
+  cursor: pointer;
+}
+
+/* Hover muy sutil (para no romper el estilo minimalista) */
+.ls__item:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* Efecto mínimo al tocar (mobile) */
+.ls__item:active {
+  transform: translateY(1px);
+}
+
+/* Foco visible para teclado */
+.ls__item:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.45);
+  outline-offset: 4px;
+}
+
+/* Barra roja vertical del lado izquierdo (acento visual) */
+.ls__accent {
+  width: 4px;
+  height: 44px;
+  background: #ff1b1b;
+}
+
+/* Texto principal */
+.ls__label {
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  font-size: 18px;
+}
+
+/* Chevron derecho */
+.ls__chev {
+  font-size: 26px;
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   FOOTER
+   - Línea divisoria
+   - Botón de logout alineado a la izquierda
+   ========================================================= */
+.ls__footer {
+  padding: 16px;
+  font-family: var(--ls-font-family);
+}
+
+.ls__divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.25);
+  margin-bottom: 18px;
+}
+
+/* Botón de cerrar sesión */
+.ls__logout {
+  border: 0;
+  width: 100%;
+  background: transparent;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  cursor: pointer;
+  padding: 10px 0;
+}
+
+/* Foco visible en logout también */
+.ls__logout:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.45);
+  outline-offset: 4px;
+}
+
+/* Texto de logout (más pequeño, como en el wireframe) */
+.ls__logout-label {
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+/* Ícono pequeño */
+.ls__logout-icon {
+  font-size: 16px;
+  padding-top: 3px;
+  opacity: 0.9;
+}
+
+/* Espaciador cuando no hay sesión para mantener altura visual */
+.ls__footer-spacer {
+  height: 44px;
+}
+
+/* =========================================================
+   Responsive opcional: en tablet el texto puede crecer un poco
+   (mobile-first: solo ampliamos, no reducimos)
+   ========================================================= */
+@media (min-width: 768px) {
+  .ls__label {
+    font-size: 19px;
+  }
+}

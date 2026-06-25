@@ -1,0 +1,138 @@
+<!--
+  <nav> indica un bloque de navegación semántico.
+  aria-label mejora accesibilidad (lectores de pantalla).
+-->
+<nav class="ls" aria-label="Menú lateral">
+  <!-- =========================
+       HEADER (FRANJA BLANCA)
+       ========================= -->
+  <div class="ls__header">
+    <button type="button" class="ls__close" (click)="close()" aria-label="Cerrar menú">
+      ×
+    </button>
+  </div>
+
+  <!-- =========================
+       BODY (FONDO NEGRO)
+       ========================= -->
+  <div class="ls__body">
+    <!--
+        Opción: INICIAR SESIÓN
+        Solo aparece cuando NO hay sesión (isLogin == false).
+        goTo() navega y luego cierra automáticamente el sidebar (ideal en mobile).
+      -->
+      @if (!isLogin) {
+      <button type="button" class="ls__item" (click)="goTo(['login'])">
+        <!-- Línea roja vertical decorativa -->
+        <span class="ls__accent" aria-hidden="true"></span>
+
+        <!-- Etiqueta principal (se pone en mayúsculas por CSS) -->
+        <span class="ls__label">INICIAR SESIÓN</span>
+
+        <!-- Chevron derecho decorativo -->
+        <span class="ls__chev" aria-hidden="true">›</span>
+      </button>
+      }
+
+      <!--
+        Opción: INICIO
+        Solo aparece cuando SI hay sesión (isLogin == true).
+        Nota: ruta real según app.routes.ts -> /app/home
+      -->
+      @if (isLogin) {
+      <button type="button" class="ls__item" (click)="goTo(['app','home'])">
+        <span class="ls__accent" aria-hidden="true"></span>
+        <span class="ls__label">INICIO</span>
+        <span class="ls__chev" aria-hidden="true">›</span>
+      </button>
+      }
+
+      <!--
+        Opción: BASES DE LA PROMOCIÓN
+        Visible para cualquier usuario (logueado o no).
+        Ruta real: /app/bases-promocion
+      -->
+      <button type="button" class="ls__item" (click)="goTo(['app','bases-promocion'])">
+        <span class="ls__accent" aria-hidden="true"></span>
+        <span class="ls__label">BASES DE LA PROMOCIÓN</span>
+        <span class="ls__chev" aria-hidden="true">›</span>
+      </button>
+
+      <!--
+        Opción: TIENDAS PARTICIPANTES
+        En su app.routes.ts actual NO existe la ruta.
+        - Si más adelante crea la pantalla, cambie el segmento al path real.
+        - Por ahora, se recomienda ocultarlo para evitar navegación a 404.
+      -->
+
+      <button type="button" class="ls__item" (click)="goTo(['app','tiendas-participantes'])">
+        <span class="ls__accent" aria-hidden="true"></span>
+        <span class="ls__label">TIENDAS PARTICIPANTES</span>
+        <span class="ls__chev" aria-hidden="true">›</span>
+      </button>
+
+      <!--
+        Opción: PERFIL DE USUARIO
+        Solo aparece cuando el usuario está logueado.
+        Ruta real: /app/perfil-usuario
+      -->
+      @if (isLogin) {
+      <button type="button" class="ls__item" (click)="goTo(['app','perfil-usuario'])">
+        <span class="ls__accent" aria-hidden="true"></span>
+        <span class="ls__label">PERFIL DE USUARIO</span>
+        <span class="ls__chev" aria-hidden="true">›</span>
+      </button>
+      }
+
+      <!--
+        Opción: INSTRUCCIONES (recomendado mantener accesible para todos)
+        Ruta real: /app/instrucciones
+      -->
+      <button type="button" class="ls__item" (click)="goTo(['app','instrucciones'])">
+        <span class="ls__accent" aria-hidden="true"></span>
+        <span class="ls__label">INSTRUCCIONES</span>
+        <span class="ls__chev" aria-hidden="true">›</span>
+      </button>
+
+      <!--
+        Opción: NUEVO LOOK
+        Ruta real: /app/nuevo-look
+      -->
+      <button type="button" class="ls__item" (click)="goTo(['app','nuevo-look'])">
+        <span class="ls__accent" aria-hidden="true"></span>
+        <span class="ls__label">NUEVO LOOK</span>
+        <span class="ls__chev" aria-hidden="true">›</span>
+      </button>
+  </div>
+
+  <!-- =========================
+       FOOTER
+       ========================= -->
+  <div class="ls__footer">
+
+    <!-- Línea divisoria decorativa -->
+    <div class="ls__divider" aria-hidden="true"></div>
+
+    <!--
+      Botón de logout:
+      - Solo se muestra si isLogin es true.
+      - Llama logout(), que ejecuta la lógica de cierre de sesión y navega.
+    -->
+    @if (isLogin) {
+    <button type="button" class="ls__logout" (click)="logout()">
+      <span class="ls__logout-label">CERRAR SESIÓN</span>
+
+      <!-- Ícono material (requiere MatIconModule en el TS) -->
+      <mat-icon class="ls__logout-icon" aria-hidden="true">logout</mat-icon>
+    </button>
+    } @else {
+    <!--
+        Si NO está logueado, reservamos espacio.
+        Esto evita que el contenido "brinque" cuando cambia isLogin.
+      -->
+    <div class="ls__footer-spacer" aria-hidden="true"></div>
+    }
+
+  </div>
+
+</nav>

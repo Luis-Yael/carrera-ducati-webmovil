@@ -1,0 +1,49 @@
+<!--
+  FOOTER APP (mobile-first)
+  - Respeta el diseño original:
+    1) (Opcional) Franja roja Licensed
+    2) Bloque negro: links centrados
+    3) Bloque blanco: copy + listón pequeño centrado
+-->
+<footer class="footer-app" role="contentinfo">
+
+  <!-- =========================
+       FRANJA ROJA (solo en pantallas que lo requieran, ej. "juego")
+       ========================= -->
+  @if (showLicensed) {
+  <div class="red-licensed" aria-label="Producto con licencia oficial">
+    <span class="txt-licensed">
+      Ducati Motor Holding S.p.A. Official Licensed Product
+    </span>
+  </div>
+  }
+
+  <!-- =========================
+       BLOQUE NEGRO: enlaces legales centrados (como wireframe)
+       =========================
+       Usamos <button> por accesibilidad:
+       - teclado
+       - lectores de pantalla
+       - sin depender de <span> clickeable
+  -->
+  <nav class="pdp-tyc" aria-label="Enlaces legales">
+    <button type="button" class="txt-links" (click)="onPrivacy()">
+      Política de privacidad
+    </button>
+
+    <button type="button" class="txt-links" (click)="onTerms()">
+      Términos y condiciones
+    </button>
+  </nav>
+
+  <!-- =========================
+       BLOQUE BLANCO: copy + listón (pequeño) centrado
+       ========================= -->
+  <div class="img-footer" aria-label="Créditos de marca">
+    <span class="copy">Carrera Eyewear &copy; {{ year }}</span>
+
+    <!-- Decorativo -->
+    <img src="assets/images/liston-img.png" class="liston-img" alt="" loading="lazy" decoding="async" />
+  </div>
+
+</footer>

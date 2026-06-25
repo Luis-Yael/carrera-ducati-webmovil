@@ -1,0 +1,85 @@
+/* =========================================================
+   Header App (ha)
+   - Usamos display: grid para centrar el logo de forma exacta.
+   - Columnas: [botón] [logo] [espaciador]
+   ========================================================= */
+.ha {
+  height: 72px;             /* coherente con el wireframe (barra superior) */
+  background: #ffffff;      /* franja blanca */
+  display: grid;
+  grid-template-columns: 56px 1fr 56px; /* izq, centro, der */
+  align-items: center;
+  padding: 0 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.10);
+}
+
+/* =========================================================
+   Botón menú
+   ========================================================= */
+.ha__menu {
+  width: 44px;
+  height: 44px;
+  border: 0;
+  background: transparent;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+/* Hover muy sutil */
+.ha__menu:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* Focus visible para teclado (accesibilidad) */
+.ha__menu:focus-visible {
+  outline: 2px solid rgba(0, 0, 0, 0.45);
+  outline-offset: 3px;
+}
+
+.ha__menu-icon {
+  color: #CD0000;
+  font-size: 28px;
+}
+
+/* =========================================================
+   Logo
+   - Se centra naturalmente por la grilla.
+   ========================================================= */
+.ha__logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 0;
+}
+
+.ha__logo-img {
+  max-height: 40px; /* Ajustable según su imagen */
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/* =========================================================
+   Espaciador derecho:
+   - mismo ancho visual que el botón menú para centrar logo.
+   ========================================================= */
+.ha__spacer {
+  width: 44px;
+  height: 44px;
+}
+
+/* =========================================================
+   Responsive (opcional):
+   - En pantallas más grandes se puede aumentar un poco.
+   ========================================================= */
+@media (min-width: 768px) {
+  .ha {
+    height: 78px;
+    padding: 0 14px;
+  }
+
+  .ha__logo-img {
+    max-height: 44px;
+  }
+}
