@@ -24,7 +24,7 @@ $bp-wide: 1280px;
    2) CONTENEDOR GLOBAL
    - “page layout”: contenido crece y footer se pega abajo
    ========================= */
-.registro-user{
+.registro-user {
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
@@ -35,33 +35,36 @@ $bp-wide: 1280px;
 }
 
 /* El wrapper contiene las 2 secciones (izq/der) */
-.wrapper{
+.wrapper {
   width: 100%;
-  flex: 1; /* ocupa alto disponible y deja footer abajo */
+  flex: 1;
+  /* ocupa alto disponible y deja footer abajo */
   display: flex;
-  flex-direction: column; /* mobile-first */
+  flex-direction: column;
+  /* mobile-first */
   align-items: center;
   justify-content: flex-start;
 
   padding: 1rem;
   gap: 1rem;
 
-  min-height: 0; /* evita overflow raro en flex */
+  min-height: 0;
+  /* evita overflow raro en flex */
 }
 
 /* Footer pegado abajo sin “agrandar” viewport */
-.footer{
+.footer {
   margin-top: auto;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: flex-end;
-
-  padding: 0.5rem 0;
-  overflow: hidden; /* por si el asset tiene 1-2px extra */
+  padding: 0 0;
+  overflow: hidden;
+  /* por si el asset tiene 1-2px extra */
 }
 
-.liston-img{
+.liston-img {
   width: 56px;
   height: auto;
   display: block;
@@ -71,16 +74,18 @@ $bp-wide: 1280px;
    3) SECCIONES
    ========================= */
 .section-left,
-.section-right{
+.section-right {
   width: 100%;
-  min-width: 0; /* importante en flex */
+  min-width: 0;
+  /* importante en flex */
 }
 
 /* IZQUIERDA: logo + imagen */
-.section-left{
+.section-left {
   display: flex;
   flex-direction: column;
-  align-items: center;  /* centrado en mobile/tablet */
+  align-items: center;
+  /* centrado en mobile/tablet */
   justify-content: flex-start;
   gap: 0.75rem;
 
@@ -88,7 +93,7 @@ $bp-wide: 1280px;
 }
 
 /* DERECHA: formulario */
-.section-right{
+.section-right {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -98,7 +103,7 @@ $bp-wide: 1280px;
 /* =========================
    4) HEADER / LOGO
    ========================= */
-.header{
+.header {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -107,7 +112,7 @@ $bp-wide: 1280px;
   padding: 0.5rem 0 0.25rem;
 }
 
-.logo-marca{
+.logo-marca {
   width: min(320px, 100%);
   height: auto;
   display: block;
@@ -121,15 +126,16 @@ $bp-wide: 1280px;
    - En HTML usa <picture> + .login-img
    - El contenedor centra y limita tamaño según breakpoint
    ========================= */
-.content{
+.content {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.login-img{
-  width: min(520px, 100%); /* base más generosa que login porque registro se ve mejor así */
+.login-img {
+  width: min(520px, 100%);
+  /* base más generosa que login porque registro se ve mejor así */
   height: auto;
   display: block;
 
@@ -144,7 +150,7 @@ $bp-wide: 1280px;
 /* =========================
    6) FORMULARIO
    ========================= */
-.registro-body{
+.registro-body {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -152,7 +158,7 @@ $bp-wide: 1280px;
 }
 
 /* Contenedor del form */
-.form-registro{
+.form-registro {
   width: 100%;
   max-width: 380px;
 
@@ -166,9 +172,9 @@ $bp-wide: 1280px;
 }
 
 /* Título */
-.title-login{
+.title-login {
   text-align: left;
-  font-family: Avenir-Bold!important;
+  font-family: Avenir-Bold !important;
   font-size: 20px;
   letter-spacing: 0px;
   color: $text-black;
@@ -178,9 +184,9 @@ $bp-wide: 1280px;
 }
 
 /* Link rojo (Términos / etc.) */
-.label-pwd{
+.label-pwd {
   text-align: left;
-  font-family: Avenir-Bold!important;
+  font-family: Avenir-Bold !important;
   font-size: 14px;
   letter-spacing: 0px;
   color: $brand-red;
@@ -188,44 +194,44 @@ $bp-wide: 1280px;
 }
 
 /* Texto inferior */
-.txt-registro{
+.txt-registro {
   text-align: center;
-  font-family: Avenir!important;
+  font-family: Avenir !important;
   font-size: 16px;
   letter-spacing: 0px;
   color: $text-black;
 }
 
-.red{
-  font-family: Avenir-Bold!important;
+.red {
+  font-family: Avenir-Bold !important;
   letter-spacing: 0px;
   color: $brand-red;
   cursor: pointer;
 }
 
 /* Línea separadora */
-hr{
+hr {
   border-top: 2px solid $hr-gray;
   width: 100%;
   margin: 0.75rem 0;
 }
 
 /* Contenedores auxiliares (en el HTML unificado) */
-.actions{
+.actions {
   width: 100%;
   display: flex;
   justify-content: center;
   margin: 0.75rem 0 0.25rem;
 }
 
-.bottom-link{
+.bottom-link {
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
 /* Feedback de errores (ajústelo a su gusto) */
-.invalid-feedback{
+.invalid-feedback {
   width: 100%;
   font-size: 13px;
   line-height: 1.2;
@@ -239,12 +245,12 @@ hr{
    ========================= */
 
 /* Mat-form-field a full width */
-.mat-mdc-form-field{
+.mat-mdc-form-field {
   width: 100%;
 }
 
 /* Labels */
-mat-label{
+mat-label {
   text-align: left;
   font-family: Avenir;
   font-size: 16px;
@@ -254,20 +260,20 @@ mat-label{
 }
 
 /* Checkbox un poco más “friendly” en mobile */
-.example-margin{
+.example-margin {
   width: 100%;
   margin-top: 0.25rem;
 }
 
 /* Botón por clase (NO global) */
-.btn-login{
+.btn-login {
   background: $brand-red 0% 0% no-repeat padding-box;
   width: 188px;
   height: 40px;
   border-radius: 0;
   opacity: 1;
 
-  .text-btn{
+  .text-btn {
     text-align: center;
     font-family: Avenir;
     font-size: 17px;
@@ -286,7 +292,8 @@ mat-label{
   /* Tokens MDC (por compatibilidad) */
   --mdc-filled-button-container-color: #CD0000;
   --mdc-filled-button-label-text-color: #FFFFFF;
-  --mat-filled-button-state-layer-color: #FFFFFF; /* hover/focus layer */
+  --mat-filled-button-state-layer-color: #FFFFFF;
+  /* hover/focus layer */
   --mat-filled-button-ripple-color: rgba(255, 255, 255, 0.2);
 
   min-width: 188px;
@@ -303,28 +310,29 @@ mat-label{
    8) TABLET (>= 768px)
    - Sigue apilado, pero más “aire” y tamaños más cómodos
    ========================= */
-@media (min-width: $bp-tablet){
+@media (min-width: $bp-tablet) {
 
-  .wrapper{
+  .wrapper {
     padding: 2rem;
     gap: 1.25rem;
   }
 
-  .logo-marca{
+  .logo-marca {
     width: min(460px, 100%);
   }
 
-  .login-img{
+  .login-img {
     width: min(760px, 100%);
     max-height: 38vh;
   }
 
-  .form-registro{
+  .form-registro {
     max-width: 460px;
   }
 
-  .btn-login{
-    width: 220px; /* un poco más grande en tablet */
+  .btn-login {
+    width: 220px;
+    /* un poco más grande en tablet */
   }
 }
 
@@ -334,9 +342,9 @@ mat-label{
    - derecha: formulario centrado verticalmente
    - Mantener todo CENTRADO en el viewport (como su “diseño original”)
    ========================= */
-@media (min-width: $bp-desktop){
+@media (min-width: $bp-desktop) {
 
-  .wrapper{
+  .wrapper {
     flex-direction: row;
     align-items: center;
     justify-content: center;
@@ -350,46 +358,48 @@ mat-label{
   }
 
   /* Izquierda: que realmente use su columna */
-  .section-left{
+  .section-left {
     flex: 1 1 60%;
-    align-items: center;   /* CENTRADO como usted pidió */
+    align-items: center;
+    /* CENTRADO como usted pidió */
     text-align: center;
     justify-content: center;
   }
 
   /* Derecha: form */
-  .section-right{
+  .section-right {
     flex: 1 1 40%;
     align-items: center;
     justify-content: center;
   }
 
-  .header{
+  .header {
     justify-content: center;
     padding: 0;
   }
 
   /* Logo más grande en desktop */
-  .logo-marca{
+  .logo-marca {
     width: min(560px, 95%);
     margin-left: auto;
     margin-right: auto;
   }
 
   /* Imagen hero grande (clave para “usar casi todo el tamaño de la columna izquierda”) */
-  .login-img{
+  .login-img {
     width: min(980px, 100%);
-    max-height: 62vh;   /* controla alto para no empujar el form */
+    max-height: 62vh;
+    /* controla alto para no empujar el form */
     object-fit: cover;
   }
 
   /* Form más ancho, pero con límite amigable */
-  .form-registro{
+  .form-registro {
     max-width: 560px;
   }
 
   /* Botón más “presente” en desktop */
-  .btn-login{
+  .btn-login {
     width: 240px;
     height: 44px;
   }
@@ -399,18 +409,18 @@ mat-label{
    10) DESKTOP WIDE (>= 1280px)
    - Aumenta todavía un poco la presencia del bloque izquierdo
    ========================= */
-@media (min-width: $bp-wide){
+@media (min-width: $bp-wide) {
 
-  .wrapper{
+  .wrapper {
     gap: 3.5rem;
     padding: 2.5rem 2.25rem;
   }
 
-  .logo-marca{
+  .logo-marca {
     width: min(620px, 95%);
   }
 
-  .login-img{
+  .login-img {
     width: min(1100px, 100%);
     max-height: 66vh;
   }
@@ -420,19 +430,20 @@ mat-label{
    11) DESKTOP CHAPARRO (altura baja)
    - Evita overflow vertical (caso típico 1366x768 / 1280x720)
    ========================= */
-@media (min-width: $bp-desktop) and (max-height: 820px){
+@media (min-width: $bp-desktop) and (max-height: 820px) {
 
-  .wrapper{
+  .wrapper {
     padding: 1.25rem 1.25rem;
     gap: 2rem;
   }
 
-  .login-img{
-    max-height: 48vh; /* baja el alto permitido */
+  .login-img {
+    max-height: 48vh;
+    /* baja el alto permitido */
     width: min(920px, 100%);
   }
 
-  .footer{
+  .footer {
     padding: 0.25rem 0;
   }
 }
@@ -441,17 +452,17 @@ mat-label{
    12) MICRO-DEVICE (muy angosto)
    - Evita que se sienta apretado
    ========================= */
-@media (max-width: 360px){
+@media (max-width: 360px) {
 
-  .wrapper{
+  .wrapper {
     padding: 0.75rem;
   }
 
-  .form-registro{
+  .form-registro {
     max-width: 320px;
   }
 
-  .btn-login{
+  .btn-login {
     width: 170px;
   }
 }

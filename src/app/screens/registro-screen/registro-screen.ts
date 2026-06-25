@@ -54,11 +54,11 @@ export class RegistroScreen implements OnInit {
 
     console.log('Registro de usuario:', this.user);
 
-    // // 1) Validación centralizada en UsuariosService
-    // this.errors = this.usuariosService.validarUsuario(this.user);
+    // 1) Validación centralizada en UsuariosService
+    this.errors = this.usuariosService.validarUsuario(this.user);
 
-    // // 2) Sin jQuery: si hay errores, se detiene
-    // if (Object.keys(this.errors).length > 0) return;
+    // 2) Sin jQuery: si hay errores, se detiene
+    if (Object.keys(this.errors).length > 0) return;
 
     // 3) Registro
     this.isLoading = true;
