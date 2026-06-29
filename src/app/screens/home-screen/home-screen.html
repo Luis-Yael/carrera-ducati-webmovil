@@ -1,1 +1,207 @@
-<p>home-screen works!</p>
+<!--
+  Sección principal del Home.
+  Mantener un contenedor único facilita mobile-first y evita wrappers innecesarios.
+-->
+<section class="home" aria-label="Pantalla principal">
+  <!--
+    Angular Material drawer:
+    - mat-drawer-container debe contener:
+      1) <mat-drawer> (el menú)
+      2) <mat-drawer-content> (todo el contenido principal)
+  -->
+  <mat-drawer-container class="home__drawer-container" autosize>
+    <!-- =========================
+         DRAWER (SIDEBAR)
+         ========================= -->
+    <mat-drawer #drawer class="home__drawer" mode="over" position="start" [opened]="drawerOpen"
+      (closedStart)="drawerOpen = false">
+      <!--
+        Left sidebar:
+        - isLogin: controla opciones mostradas
+        - closeSidebar: notifica a Home que debe cerrar el drawer
+      -->
+      <app-left-sidebar [isLogin]="isLogin" (closeSidebar)="closeSidebar()"></app-left-sidebar>
+
+    </mat-drawer>
+
+    <!-- =========================
+         CONTENIDO PRINCIPAL
+         ========================= -->
+    <mat-drawer-content class="home__content">
+      <!-- Header -->
+      <app-header-app (menuToggle)="toggleSidebar()"></app-header-app>
+
+      <!-- =========================
+           BODY
+           ========================= -->
+      <main class="body-home" role="main">
+        <!-- 1) Sección banner / eslogan -->
+        <section class="section-image" aria-label="Banner de promoción">
+          <img src="assets/images/banner-img.png" class="banner-img" alt="Promoción Ducati Scrambler" loading="lazy"
+            decoding="async">
+
+          <div class="eslogan">
+            <div class="eslogan__left">
+              <span class="txt-1">Conoce cómo ganar una</span>
+              <span class="txt-2">Ducati Scrambler</span>
+            </div>
+
+            <!-- CTA accesible -->
+            <button type="button" class="eslogan__cta" (click)="saberMas()" aria-label="Saber más sobre la promoción">
+              <span class="txt-red">Saber más</span>
+              <mat-icon class="icon-arrow" aria-hidden="true">arrow_forward</mat-icon>
+            </button>
+
+          </div>
+        </section>
+
+        <!-- 2) Sección saludo -->
+        <section class="section-name-user" aria-label="Saludo de usuario">
+          <span class="txt-3">Hola</span>
+          <span class="txt-user">{{ name_user }}</span>
+        </section>
+
+        <!-- 3) Sección registro de código -->
+        <section class="section-codigo" aria-label="Registro de código">
+          <div class="section-codigo__inner">
+            <div class="registra-codigo">
+              <h2 class="txt-registro">Registra tu código</h2>
+
+              <!-- Formulario reactivo -->
+              <form [formGroup]="inputsCodigo" class="codigo-form" autocomplete="off">
+                <div formArrayName="listaInputs" class="codigo-form__row">
+                  <!--
+                    @for:
+                    - track $index equivale a trackByIndex
+                    - $index sustituye a i
+                  -->
+                  @for (ctrl of getCamposInputs.controls; track $index) {
+                  <div class="codigo-form__cell" [formGroupName]="$index">
+                    <input type="text" formControlName="valor" class="codigo-input" mask="A"
+                      [attr.id]="'input-code-' + $index" placeholder="0" aria-label="Caracter de código">
+                  </div>
+                  }
+                </div>
+              </form>
+
+              <!-- Select tiendas -->
+              <mat-form-field appearance="outline" class="select-tienda">
+                <mat-label>Tienda de compra</mat-label>
+
+                <mat-select [(ngModel)]="participacion.tienda" name="tiendas" (selectionChange)="changeTienda($event)">
+                  @for (tienda of tiendas; track tienda.value) {
+                  <mat-option [value]="tienda.value">
+                    {{ tienda.nombre }}
+                  </mat-option>
+                  }
+                </mat-select>
+              </mat-form-field>
+
+              <!-- Botón registrar -->
+              <div class="acciones">
+                <button mat-flat-button type="button" class="btn-registrar" type="button" (click)="registrarCodigo()"
+                  [disabled]="isLoading">
+                  @if (!isLoading) {
+                  <span class="text-btn">Registrar</span>
+                  } @else {
+                  <span class="text-btn">Procesando…</span>
+                  }
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4) Sección puntaje / ranking -->
+        <section class="section-puntaje" aria-label="Puntaje y ranking">
+          <div class="puntaje">
+            <span class="title-pnt">Puntaje</span>
+            <span class="txt-pnt">Has acumulado</span>
+            <span class="txt-pnt-red">{{ totalPuntos }}</span>
+            <span class="txt-pnt">puntos</span>
+          </div>
+
+          <div class="ranking">
+            <span class="title-pnt">Ranking</span>
+            <span class="txt-pnt">Tu posición es</span>
+            <span class="txt-pnt-red">{{ posicionRanking }}</span>
+          </div>
+        </section>
+
+        <!-- 5) Sección códigos registrados -->
+        <section class="codigos-registrados" aria-label="Códigos registrados">
+          <div class="codigos-registrados__inner">
+            <h2 class="title-codigos pt-1 mb-5">Códigos registrados</h2>
+            <!--
+              Eliminamos:
+              - ng-container
+              - else template
+              - optional chaining
+              y usamos @if/@else (Angular 20)
+            -->
+            @if (lista_codigos.length > 0) {
+            <div class="table-responsive">
+              <table class="table">
+                <thead class="head-table">
+                  <tr>
+                    @if (tiene_juegos_pendientes) {
+                    <th scope="col">Jugar</th>
+                    }
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Código</th>
+                    <th scope="col">Puntos totales</th>
+                    <th scope="col" class="col-min-100">Puntos por código</th>
+                    <th scope="col" class="col-min-100">Puntos por jugar</th>
+                    <th scope="col" class="col-min-20"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!--
+                      @for para la tabla
+                      track codigo.codigo (id estable)
+                    -->
+                  @for (codigo of lista_codigos; track codigo.codigo) {
+                    <tr class="tr-table">
+
+                    @if (tiene_juegos_pendientes) {
+                      <td class="td-center">
+                        @if (codigo.participaciones < 2) { <button type="button" class="btn-icon"
+                          (click)="jugarParticipacion(codigo)" aria-label="Jugar participación">
+                          <mat-icon class="icon-play" aria-hidden="true">
+                            play_circle_outline
+                          </mat-icon>
+                          </button>
+                        }
+                      </td>
+                    }
+                    <td class="td-center col-min-100">
+                      {{ codigo.creation | date:'dd-MM-yyyy' }}
+                    </td>
+
+                    <td class="td-center">{{ codigo.codigo }}</td>
+                    <td class="td-center">{{ codigo.puntos_totales }}</td>
+                    <td class="td-center col-min-100">{{ codigo.puntos_codigo }}</td>
+                    <td class="td-center col-min-100">{{ codigo.puntos_jugar }}</td>
+                    <td class="td-center col-min-20"></td>
+
+                  </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+            }@else {
+              <span class="txt-pnt">No se tienen códigos registrados</span>
+            }
+          </div>
+        </section>
+
+        <!-- 6) Footer -->
+        <section class="footer" aria-label="Pie de página">
+          <app-footer-app [showLicensed]="showLicensed" (privacyClick)="openPrivacy()"
+            (termsClick)="openTerms()"></app-footer-app>
+        </section>
+
+      </main>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</section>
