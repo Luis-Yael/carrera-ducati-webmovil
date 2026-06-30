@@ -26,6 +26,22 @@ export const routes: Routes = [
         loadComponent: () => import('./screens/bases-promocion-screen/bases-promocion-screen').then(m => m.BasesPromocionScreen),
       },
       {
+        path: 'nuevo-look',
+        loadComponent: () => import('./screens/nuevo-look-screen/nuevo-look-screen').then(m => m.NuevoLookScreen),
+      },
+      {
+        path: 'juego-simulado',
+        loadComponent: () => import('./screens/juego-simulado-screen/juego-simulado-screen').then(m => m.JuegoSimuladoScreen),
+      },
+      {
+        path: 'juego-terminado',
+        loadComponent: () => import('./screens/juego-terminado-screen/juego-terminado-screen').then(m => m.JuegoTerminadoScreen),
+      },
+      {
+        path: 'perfil-usuario',
+        loadComponent: () => import('./screens/perfil-usuario-screen/perfil-usuario-screen').then(m => m.PerfilUsuarioScreen),
+      },
+      {
         path: 'politica-privacidad',
         loadComponent: () => import('./screens/politica-privacidad-screen/politica-privacidad-screen').then(m => m.PoliticaPrivacidadScreen),
       },

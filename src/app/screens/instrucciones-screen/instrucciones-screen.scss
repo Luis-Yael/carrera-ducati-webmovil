@@ -1,0 +1,260 @@
+/* =========================================================
+   INSTRUCCIONES - BASE (mobile-first)
+   ========================================================= */
+
+.instrucciones {
+  width: 100%;
+  min-height: 100vh;
+  background: #ffffff;
+}
+
+.instrucciones__drawer-container {
+  height: 100vh;
+  background: #ffffff;
+}
+
+.instrucciones__drawer {
+  width: 85vw;
+  max-width: 340px;
+  border-right: 0;
+}
+
+.instrucciones__content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+}
+
+/* Scroll como Home */
+.body-instrucciones {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #ffffff;
+}
+
+/* Contenedor centrado (solo contenido) */
+.instrucciones__inner {
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 15px 24px 15px;
+}
+
+/* =========================================================
+   TÍTULO
+   ========================================================= */
+.section-title {
+  border-top: 1px solid rgba(122, 122, 122, 0.12);
+  display: flex;
+  justify-content: center;
+  padding: 14px 0;
+  margin-bottom: 24px;
+}
+
+.eslogan {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.line-color {
+  width: 18px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.vertical-line {
+  width: 5px;
+  background-color: #cd0000;
+  height: 60px;
+}
+
+.title-link {
+  font-family: Avenir-Bold;
+  font-size: 20px;
+  color: #000000;
+}
+
+/* =========================================================
+   OBJETIVO
+   ========================================================= */
+.section-obj {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 2.5rem;
+}
+
+.objetivo {
+  margin: 0;
+  font-family: Avenir-Bold;
+  font-size: 16px;
+  color: #000000;
+}
+
+.txt-objetivo {
+  margin: 0;
+  font-family: Avenir;
+  font-size: 16px;
+  line-height: 1.55;
+  color: #000000;
+}
+
+/* =========================================================
+   TABLA
+   ========================================================= */
+.puntuacion {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 2.5rem;
+
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table {
+  width: 100%;
+  min-width: 520px;
+}
+
+.head-table {
+  font-family: Avenir-Bold;
+  font-size: 16px;
+  color: #000;
+  vertical-align: middle;
+}
+
+.tr-table {
+  font-family: Avenir;
+  font-size: 14px;
+  color: #000;
+}
+
+td {
+  height: 60px;
+  vertical-align: middle;
+}
+
+.txt-pnt {
+  font-family: Avenir;
+  font-size: 16px;
+  color: #000;
+}
+
+/* =========================================================
+   INFO + BOTÓN
+   ========================================================= */
+.section-info-adicional {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-bottom: 24px;
+}
+
+.title {
+  margin: 0;
+  font-family: Avenir-Bold;
+  font-size: 16px;
+  color: #000;
+}
+
+.txt-info {
+  margin: 0;
+  font-family: Avenir;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #000;
+}
+
+/* Botón centrado (como usted solicita) */
+.actions {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.btn-login {
+  min-width: 188px;
+  height: 40px;
+  border-radius: 0;
+}
+
+/* Material button (rojo) */
+:host ::ng-deep button.btn-login.mat-mdc-unelevated-button {
+  background-color: #cd0000 !important;
+  color: #ffffff !important;
+
+  --mdc-filled-button-container-color: #cd0000;
+  --mdc-filled-button-label-text-color: #ffffff;
+
+  font-family: Avenir, sans-serif !important;
+  font-size: 16px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.mat-mdc-button-disabled {
+  background: #cd0000 !important;
+  opacity: 0.55 !important;
+}
+
+/* =========================================================
+   FOOTER FULL WIDTH (pegado a bordes)
+   ========================================================= */
+.footer {
+  width: 100%;
+  margin: 0;        /* sin separación lateral */
+  padding: 0;       /* el footer se controla dentro del componente */
+}
+
+/* Si su <app-footer-app> trae un wrapper interno que se centra,
+   esta regla lo obliga a ocupar todo el ancho */
+.footer app-footer-app {
+  display: block;
+  width: 100%;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (min-width: 768px) {
+  .instrucciones__drawer {
+    width: 360px;
+  }
+
+  .instrucciones__inner {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .title-link {
+    font-size: 22px;
+  }
+
+  .table {
+    min-width: 680px;
+  }
+}
+
+@media (min-width: 992px) {
+  .instrucciones__inner {
+    max-width: 1040px;
+  }
+
+  .title-link {
+    font-size: 24px;
+  }
+
+  .puntuacion {
+    overflow-x: visible;
+  }
+
+  .table {
+    min-width: 0;
+  }
+}

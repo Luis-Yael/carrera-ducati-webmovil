@@ -1,1 +1,77 @@
-<p>politica-privacidad-screen works!</p>
+<!-- Pantalla: Política de Privacidad -->
+<section class="privacy" aria-label="Pantalla Política de Privacidad">
+
+  <mat-drawer-container class="privacy__drawer-container" autosize>
+
+    <!-- DRAWER -->
+    <mat-drawer #drawer class="privacy__drawer" mode="over" position="start" [opened]="drawerOpen"
+      (closedStart)="drawerOpen = false">
+      <app-left-sidebar [isLogin]="isLogin" (closeSidebar)="closeSidebar()"></app-left-sidebar>
+    </mat-drawer>
+
+    <!-- CONTENIDO -->
+    <mat-drawer-content class="privacy__content">
+
+      <!-- Header -->
+      <app-header-app (menuToggle)="toggleSidebar()"></app-header-app>
+
+      <!-- Body con scroll interno -->
+      <main class="privacy__body" role="main">
+
+        <!-- Contenido centrado -->
+        <div class="privacy__inner">
+
+          <!-- Título -->
+          <section class="privacy__title" aria-label="Título de la sección">
+            <div class="privacy__title-row">
+              <span class="privacy__title-line" aria-hidden="true"></span>
+              <h1 class="privacy__title-text">POLÍTICA DE PRIVACIDAD</h1>
+            </div>
+          </section>
+
+          <!-- =========================================================
+               CONTENIDO DEL AVISO
+               IMPORTANTE:
+               Reemplace TODO este bloque por el texto real que trae su
+               archivo original aviso-privacidad-screen.component.html
+               (para no inventar contenido legal).
+               ========================================================= -->
+          <section class="privacy__content-text" aria-label="Contenido de Política de Privacidad">
+
+            <p class="txt-inst">
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
+              ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
+              dolores et ea rebum.
+            </p>
+
+            <p class="txt-inst">
+              Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor
+              sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+              magna aliquyam erat, sed diam voluptua.
+            </p>
+
+            <p class="txt-inst">
+              At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+              sanctus est.
+            </p>
+
+            <p class="txt-inst">
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
+              ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
+              dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+              amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
+              ut labore et dolore magna aliquyam erat, sed diam voluptua.
+            </p>
+
+          </section>
+        </div>
+
+        <!-- Footer FULL WIDTH -->
+        <section class="privacy__footer" aria-label="Pie de página">
+          <app-footer-app pantalla="politica-privacidad"></app-footer-app>
+        </section>
+
+      </main>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</section>

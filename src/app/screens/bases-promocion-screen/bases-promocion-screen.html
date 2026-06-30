@@ -1,1 +1,94 @@
-<p>bases-promocion-screen works!</p>
+<!-- Pantalla: Bases de la promoción -->
+<section class="bases" aria-label="Bases de la promoción">
+  <!-- Drawer container (igual que Home/Instrucciones) -->
+  <mat-drawer-container class="bases__drawer-container" autosize>
+    <!-- DRAWER (Sidebar) -->
+    <mat-drawer #drawer class="bases__drawer" mode="over" position="start" [opened]="drawerOpen"
+      (closedStart)="drawerOpen = false">
+      <app-left-sidebar [isLogin]="isLogin" (closeSidebar)="closeSidebar()"></app-left-sidebar>
+    </mat-drawer>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <mat-drawer-content class="bases__content">
+      <!-- Header (mismo output que Home/Instrucciones) -->
+      <app-header-app (menuToggle)="toggleSidebar()"></app-header-app>
+
+      <!-- Body -->
+      <main class="bases__body" role="main">
+        <!-- Encabezado: imagen + título -->
+        <section class="bases__hero" aria-label="Encabezado de bases">
+          <img src="assets/images/header-img.png" class="bases__hero-img" alt="Bases de la promoción" loading="eager"
+            fetchpriority="high" decoding="async">
+
+          <div class="bases__title-row">
+            <span class="bases__title-line" aria-hidden="true"></span>
+            <h1 class="bases__title">Bases de la promoción</h1>
+          </div>
+        </section>
+
+        <!-- Contenido: texto de las bases -->
+        <section class="bases__inner" aria-label="Contenido de bases">
+          <!-- Bloque 1 -->
+          <article class="bases__step" aria-label="Paso 1">
+            <img src="assets/images/1-compra-titulo.png" class="bases__step-img" alt="1 Compra">
+            <div class="bases__step-row">
+              <span class="bases__text">productos participantes</span>
+              <img src="assets/images/logo-marcas.png" class="bases__logos" alt="Marcas participantes">
+            </div>
+            <span class="bases__text bases__text--bold">en Liverpool/Devlyn</span>
+          </article>
+
+          <!-- Bloque 2 -->
+          <article class="bases__step" aria-label="Paso 2">
+            <img src="assets/images/2-registra-titulo.png" class="bases__step-img" alt="2 Registra">
+            <span class="bases__text">todos tus códigos en el sitio</span>
+            <span class="bases__text bases__text--bold">www.acelerayganaconcarrera.com.mx</span>
+          </article>
+
+          <!-- Bloque 3 -->
+          <article class="bases__step" aria-label="Paso 3">
+            <img src="assets/images/3-acumula-titulo.png" class="bases__step-img" alt="3 Acumula">
+            <span class="bases__text">puntos con cada compra y juega por puntos extras</span>
+          </article>
+
+          <!-- Bloque 4 -->
+          <article class="bases__step" aria-label="Paso 4">
+            <img src="assets/images/4-gana-titulo.png" class="bases__step-img" alt="4 Gana">
+            <p class="bases__text">
+              Una <span class="bases__text bases__text--bold">Moto Ducati</span> al finalizar la promoción
+            </p>
+
+            <button type="button" class="bases__moto-btn" (click)="goInstrucciones()"
+              aria-label="Ver instrucciones del juego">
+              <img src="assets/images/moto.png" class="bases__moto-img" alt="Moto Ducati">
+            </button>
+          </article>
+
+          <!-- Texto largo (si se mantiene, conviene dividir en párrafos en el futuro) -->
+          <article class="bases__legal" aria-label="Texto de bases">
+            <p class="bases__legal-text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia reiciendis neque ducimus quos, non obcaecati
+              necessitatibus saepe alias velit perspiciatis ipsum nulla fuga eaque odit minima deleniti sit officia
+              accusamus tempore quod. Maiores, recusandae? Perspiciatis provident dolore facilis est laborum sed
+              voluptatum
+              nam aliquid alias hic repudiandae in totam commodi nisi sequi sapiente ea eveniet repellat, inventore
+              recusandae animi! Maxime vero at assumenda doloribus quia similique asperiores porro iure distinctio
+              perferendis eaque tenetur, itaque modi omnis laborum incidunt nemo ipsam quo consequatur unde nostrum
+              vitae.
+              Repellat voluptas praesentium mollitia ducimus hic id, deleniti recusandae ipsam cupiditate aut quia
+              beatae
+              libero minima odit necessitatibus, placeat distinctio esse.
+            </p>
+          </article>
+        </section>
+
+        <!-- Footer (a borde completo, como Home) -->
+        <section class="bases__footer" aria-label="Pie de página">
+          <app-footer-app></app-footer-app>
+        </section>
+
+      </main>
+
+    </mat-drawer-content>
+  </mat-drawer-container>
+</section>

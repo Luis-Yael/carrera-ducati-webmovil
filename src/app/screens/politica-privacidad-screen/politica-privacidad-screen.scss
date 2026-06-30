@@ -1,0 +1,173 @@
+/* =========================================================
+   POLÍTICA DE PRIVACIDAD - BASE (igual patrón que nuevo-look)
+   ========================================================= */
+
+.privacy {
+  width: 100%;
+  min-height: 100vh;
+  background: #ffffff;
+}
+
+/* Drawer container */
+.privacy__drawer-container {
+  height: 100vh;
+  background: #ffffff;
+}
+
+/* Drawer */
+.privacy__drawer {
+  width: 85vw;
+  max-width: 340px;
+  border-right: 0;
+}
+
+/* Contenido principal */
+.privacy__content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+}
+
+/* Body: scroll interno */
+.privacy__body {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #ffffff;
+
+  /* Importante: evita “brincos” por márgenes colapsados */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Contenedor centrado */
+.privacy__inner {
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 15px 22px 15px;
+}
+
+/* =========================================================
+   TÍTULO
+   ========================================================= */
+
+.privacy__title {
+  border-top: 1px solid rgba(122, 122, 122, 0.12);
+  padding: 18px 0 14px 0;
+}
+
+.privacy__title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.privacy__title-line {
+  width: 4px;
+  height: 28px;
+  background: #cd0000;
+  flex: 0 0 auto;
+}
+
+.privacy__title-text {
+  margin: 0;
+  font-family: Avenir-Bold, Avenir, sans-serif;
+  font-size: 20px;
+  letter-spacing: 0;
+  color: #000;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   TEXTO (manteniendo tipografías originales)
+   ========================================================= */
+
+.privacy__content-text {
+  padding-top: 8px;
+}
+
+/* Respeta la tipografía del diseño original */
+.txt-inst {
+  margin: 0 0 14px 0;
+  text-align: justify;
+  font-family: Avenir, sans-serif;
+  font-size: 16px;
+  letter-spacing: 0px;
+  color: #000000;
+  opacity: 1;
+}
+
+/* Listas: mismas letras, sangría limpia */
+.privacy__content-text ul {
+  margin: 0 0 14px 18px;
+  padding: 0;
+}
+
+.privacy__content-text li {
+  margin-bottom: 8px;
+}
+
+/* Tablas (si su aviso trae tablas) */
+.privacy__content-text .table {
+  width: 100%;
+  border-collapse: collapse;
+
+  .head-table {
+    text-align: left;
+    font-family: Avenir, sans-serif;
+    font-size: 16px;
+    letter-spacing: 0px;
+    color: #000000;
+    text-transform: uppercase;
+    vertical-align: middle;
+  }
+
+  .tr-table {
+    text-align: left;
+    font-family: Avenir, sans-serif;
+    font-size: 14px;
+    letter-spacing: 0px;
+    color: #000000;
+  }
+}
+
+.privacy__content-text td {
+  vertical-align: middle;
+  height: 60px;
+}
+
+/* =========================================================
+   FOOTER FULL WIDTH
+   ========================================================= */
+
+.privacy__footer {
+  width: 100%;
+  margin-top: auto;
+  /* clave: empuja footer al fondo cuando hay poco contenido */
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (min-width: 768px) {
+  .privacy__drawer {
+    width: 360px;
+  }
+
+  .privacy__inner {
+    max-width: 1040px;
+  }
+
+  .privacy__title-text {
+    font-size: 22px;
+  }
+}
+
+@media (min-width: 992px) {
+  .privacy__title-text {
+    font-size: 24px;
+  }
+}
